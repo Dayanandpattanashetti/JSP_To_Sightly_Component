@@ -1,0 +1,38 @@
+<header>
+    <h1>{{title}}</h1>
+</header>
+
+{{#if user}}
+    <p>Welcome, {{user.name}}!</p>
+{{else}}
+    <p>Welcome, Guest!</p>
+{{/if}}
+
+<section>
+    <h2>Articles</h2>
+    {{#each articles}}
+        <article>
+            <h3>{{this.title}}</h3>
+            <p>{{this.content}}</p>
+            <footer>
+                <p>Author: {{this.author}}</p>
+                <p>Published on: {{formatDate this.date}}</p>
+            </footer>
+        </article>
+    {{/each}}
+</section>
+
+<section>
+    <h2>Comments</h2>
+    {{#if comments.length}}
+        <ul>
+            {{#each comments}}
+                <li>{{this.user}}: {{this.text}}</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No comments yet.</p>
+    {{/if}}
+</section>
+
+{{> footer}}
